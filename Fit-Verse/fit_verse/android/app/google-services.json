@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "881771333733",
+    "project_id": "fit-verse-c3088",
+    "storage_bucket": "fit-verse-c3088.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881771333733:android:aa65b1f0c591a62d2c5e8c",
+        "android_client_info": {
+          "package_name": "com.example.fit_verse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4r1gT_VxvV1nqkB7EkwwXC0JFbm0vwNk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
