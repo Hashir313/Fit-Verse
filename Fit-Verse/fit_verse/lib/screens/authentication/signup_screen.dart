@@ -2,7 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fit_verse/controllers/auth/auth_controller.dart';
-import 'package:fit_verse/screens/home/home_screen.dart';
+import 'package:fit_verse/screens/authentication/login_screen.dart';
 import 'package:fit_verse/utils/colors.dart';
 import 'package:fit_verse/utils/custom_button.dart';
 import 'package:flutter/foundation.dart';
@@ -56,7 +56,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Container(
                       width: 1.sw,
                       decoration: BoxDecoration(
-                        color: black.withOpacity(0.85),
+                        color: black.withValues(alpha: 0.85),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(200.r),
                           topRight: Radius.circular(200.r),
@@ -108,8 +108,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             BorderRadius.circular(20.r),
                                         gradient: LinearGradient(
                                           colors: [
-                                            white.withOpacity(0.1),
-                                            white.withOpacity(0.3),
+                                            white.withValues(alpha: 0.1),
+                                            white.withValues(alpha: 0.3),
                                           ],
                                           begin: Alignment.topLeft,
                                           end: Alignment.bottomCenter,
@@ -140,8 +140,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             color: secondaryColor,
                                           ),
                                           hintStyle: GoogleFonts.poppins(
-                                            color: white.withOpacity(
-                                              0.75,
+                                            color: white.withValues(
+                                              alpha: 0.75,
                                             ),
                                             fontSize: 60.sp,
                                             fontWeight: FontWeight.bold,
@@ -149,13 +149,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           fillColor: Colors.transparent,
                                           filled: true,
                                           errorStyle: GoogleFonts.poppins(
-                                            color: buttonColor,
+                                            color: primaryColor,
                                             fontSize: 60.sp,
                                             fontWeight: FontWeight.w600,
                                           ),
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: buttonColor,
+                                              color: primaryColor,
                                             ),
                                           ),
                                           enabledBorder:
@@ -196,8 +196,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             BorderRadius.circular(20.r),
                                         gradient: LinearGradient(
                                           colors: [
-                                            white.withOpacity(0.1),
-                                            white.withOpacity(0.3),
+                                            white.withValues(alpha: 0.1),
+                                            white.withValues(alpha: 0.3),
                                           ],
                                           begin: Alignment.topLeft,
                                           end: Alignment.bottomCenter,
@@ -226,17 +226,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             color: secondaryColor,
                                           ),
                                           errorStyle: GoogleFonts.poppins(
-                                            color: buttonColor,
+                                            color: primaryColor,
                                             fontSize: 60.sp,
                                             fontWeight: FontWeight.w600,
                                           ),
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: buttonColor,
+                                              color: primaryColor,
                                             ),
                                           ),
                                           hintStyle: GoogleFonts.poppins(
-                                            color: white.withOpacity(0.75),
+                                            color:
+                                                white.withValues(alpha: 0.75),
                                             fontSize: 60.sp,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -280,8 +281,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                             BorderRadius.circular(20.r),
                                         gradient: LinearGradient(
                                           colors: [
-                                            white.withOpacity(0.1),
-                                            white.withOpacity(0.3),
+                                            white.withValues(alpha: 0.1),
+                                            white.withValues(alpha: 0.3),
                                           ],
                                           begin: Alignment.topLeft,
                                           end: Alignment.bottomCenter,
@@ -324,22 +325,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                   ? Icons.visibility_outlined
                                                   : Icons
                                                       .visibility_off_outlined,
-                                              color: white.withOpacity(0.75),
+                                              color:
+                                                  white.withValues(alpha: 0.75),
                                             ),
                                           ),
                                           hintStyle: GoogleFonts.poppins(
-                                            color: white.withOpacity(0.75),
+                                            color:
+                                                white.withValues(alpha: 0.75),
                                             fontSize: 60.sp,
                                             fontWeight: FontWeight.bold,
                                           ),
                                           errorStyle: GoogleFonts.poppins(
-                                            color: buttonColor,
+                                            color: primaryColor,
                                             fontSize: 60.sp,
                                             fontWeight: FontWeight.w600,
                                           ),
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: buttonColor,
+                                              color: primaryColor,
                                             ),
                                           ),
                                           fillColor: Colors.transparent,
@@ -383,9 +386,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       emailController.text,
                                       passwordController.text,
                                     );
-                                    if (kDebugMode) {
-                                      print('Credential: $credential');
-                                    }
 
                                     // Upload user details to Firestore if sign-up is successful
                                     await FirebaseServices().uploadUserDetails(
@@ -399,7 +399,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       isLoading = false;
                                     });
 
-                                    print('Uploaded user details');
+                                    if (kDebugMode) {
+                                      print('Uploaded user details');
+                                    }
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
                                           content: Text('Sign up successful')),
@@ -409,7 +411,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const HomeScreen()),
+                                              const LoginScreen()),
                                     );
                                   } catch (error) {
                                     setState(() {
@@ -420,7 +422,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(content: Text(error.toString())),
                                     );
-                                    print('Error: $error');
+                                    if (kDebugMode) {
+                                      print('Error: $error');
+                                    }
                                   }
                                 }
                               },

@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class FirebaseServices {
@@ -80,9 +81,13 @@ class FirebaseServices {
         'email': email,
         'uid': uid,
       });
-      print('User details uploaded successfully');
+      if (kDebugMode) {
+        print('User details uploaded successfully');
+      }
     } catch (e) {
-      print('Error uploading user details: $e'); // Improved error logging
+      if (kDebugMode) {
+        print('Error uploading user details: $e');
+      } // Improved error logging
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to upload user details: $e')),
       );

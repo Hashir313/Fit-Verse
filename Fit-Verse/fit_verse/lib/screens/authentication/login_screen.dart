@@ -2,7 +2,8 @@
 
 import 'package:fit_verse/controllers/auth/auth_controller.dart';
 import 'package:fit_verse/screens/authentication/signup_screen.dart';
-import 'package:fit_verse/screens/home/home_screen.dart';
+import 'package:fit_verse/screens/bottom_navigation_bar/bottom_navigation_bar_screen.dart';
+import 'package:fit_verse/screens/bottom_navigation_bar/home/home_screen.dart';
 import 'package:fit_verse/utils/colors.dart';
 import 'package:fit_verse/utils/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: MediaQuery.of(context).size.height,
               child: Column(
                 children: [
+                  //! FIrst expanded widget
                   Expanded(
                     flex: 1,
                     child: Container(
@@ -49,12 +51,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
+                  //! Second expanded widget
                   Expanded(
                     flex: 2,
                     child: Container(
                       width: 1.sw,
                       decoration: BoxDecoration(
-                        color: black.withOpacity(0.85),
+                        color: black.withValues(alpha: 0.85),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(200.r),
                           topRight: Radius.circular(200.r),
@@ -106,8 +109,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                             BorderRadius.circular(20.r),
                                         gradient: LinearGradient(
                                           colors: [
-                                            white.withOpacity(0.1),
-                                            white.withOpacity(0.3),
+                                            white.withValues(alpha: 0.1),
+                                            white.withValues(alpha: 0.3),
                                           ],
                                           begin: Alignment.topLeft,
                                           end: Alignment.bottomCenter,
@@ -138,22 +141,21 @@ class _LoginScreenState extends State<LoginScreen> {
                                             color: secondaryColor,
                                           ),
                                           hintStyle: GoogleFonts.poppins(
-                                            color: white.withOpacity(
-                                              0.75,
-                                            ),
+                                            color:
+                                                white.withValues(alpha: 0.75),
                                             fontSize: 60.sp,
                                             fontWeight: FontWeight.bold,
                                           ),
                                           fillColor: Colors.transparent,
                                           filled: true,
                                           errorStyle: GoogleFonts.poppins(
-                                            color: buttonColor,
+                                            color: primaryColor,
                                             fontSize: 60.sp,
                                             fontWeight: FontWeight.w600,
                                           ),
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: buttonColor,
+                                              color: primaryColor,
                                             ),
                                           ),
                                           enabledBorder:
@@ -194,8 +196,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                             BorderRadius.circular(20.r),
                                         gradient: LinearGradient(
                                           colors: [
-                                            white.withOpacity(0.1),
-                                            white.withOpacity(0.3),
+                                            white.withValues(alpha: 0.1),
+                                            white.withValues(alpha: 0.3),
                                           ],
                                           begin: Alignment.topLeft,
                                           end: Alignment.bottomCenter,
@@ -238,22 +240,24 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   ? Icons.visibility_outlined
                                                   : Icons
                                                       .visibility_off_outlined,
-                                              color: white.withOpacity(0.75),
+                                              color:
+                                                  white.withValues(alpha: 0.75),
                                             ),
                                           ),
                                           hintStyle: GoogleFonts.poppins(
-                                            color: white.withOpacity(0.75),
+                                            color:
+                                                white.withValues(alpha: 0.75),
                                             fontSize: 60.sp,
                                             fontWeight: FontWeight.bold,
                                           ),
                                           errorStyle: GoogleFonts.poppins(
-                                            color: buttonColor,
+                                            color: primaryColor,
                                             fontSize: 60.sp,
                                             fontWeight: FontWeight.w600,
                                           ),
                                           errorBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: buttonColor,
+                                              color: primaryColor,
                                             ),
                                           ),
                                           fillColor: Colors.transparent,
@@ -316,7 +320,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            const HomeScreen(),
+                                            const BottomNavigationBarScreen(),
                                       ),
                                     );
                                   }).onError((error, stackTrace) {
@@ -347,9 +351,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: Text(
                                 'Don\'t have an account? Sign up',
                                 style: GoogleFonts.poppins(
-                                  color: white.withOpacity(0.75),
+                                  color: white.withValues(alpha: 0.75),
                                   decoration: TextDecoration.underline,
-                                  decorationColor: white.withOpacity(0.75),
+                                  decorationColor:
+                                      white.withValues(alpha: 0.75),
                                   decorationThickness: 2,
                                   fontSize: 60.sp,
                                 ),
